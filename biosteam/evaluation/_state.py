@@ -347,13 +347,13 @@ class State:
         try:
             if thorough: 
                 for f, s in zip(self._parameters, sample): f.setter(s)
-                self._specification() if self._specification else self._system.simulate()
+                self._specification[0]() if self._specification else self._system.simulate()
             else:
                 same_arr = self._sample_cache==sample
                 for p, x, same in zip(self._parameters, sample, same_arr):
                     if same: continue
                     p.setter(x)
-                if self._specification: self._specification()
+                if self._specification: self._specification[0]()
                 for p, x, same in zip(self._parameters, sample, same_arr):
                     if same: continue
                     p.simulate()

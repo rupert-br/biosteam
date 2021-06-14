@@ -167,8 +167,9 @@ class HeatExchangerNetwork(Facility):
         try: sys._converge()
         except: pass
         for u in sys.units: 
-            u._design()
-            u._cost()
+            # u._design()
+            # u._cost()
+            u._summary()
         new_purchase_costs_HXp = []
         new_purchase_costs_HXu = []
         new_installed_costs_HXp = []
